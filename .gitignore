@@ -1,0 +1,9 @@
+README.md
+*.a
+*.o
+a.out
+a.out.dSYM/
+.DS_Store
+.vscode/
+objs/
+txt
