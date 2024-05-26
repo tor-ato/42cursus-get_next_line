@@ -6,22 +6,28 @@
 /*   By: tkitahar <tkitahar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:51:34 by tkitahar          #+#    #+#             */
-/*   Updated: 2024/05/24 18:16:34 by tkitahar         ###   ########.fr       */
+/*   Updated: 2024/05/26 21:58:15 by tkitahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
 
 #ifndef GRT_NEXT_LINE_H
 # define GRT_NEXT_LINE_H
 
+# include <fcntl.h>
 # include <stdio.h>
+# include <unistd.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 3
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 3
+# endif
 
-char *get_next_line(int fd);
+typedef struct s_line
+{
+	char	*string;
+	size_t	length;
+	size_t	capacity;
+}			t_line;
+
+char		*get_next_line(int fd);
 
 #endif
