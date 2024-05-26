@@ -6,7 +6,7 @@
 /*   By: tkitahar <tkitahar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:51:28 by tkitahar          #+#    #+#             */
-/*   Updated: 2024/05/26 22:01:42 by tkitahar         ###   ########.fr       */
+/*   Updated: 2024/05/26 23:02:04 by tkitahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ unsigned char	ft_getc(int fd)
 		return ((unsigned char)*bufp++);
 	else
 		return (EOF);
+}
+
+void	ft_putc(t_line *gnl, char c)
+{
+	gnl->string[gnl->length++] = c;
+	return ;
 }
 
 char	*get_next_line(int fd)
@@ -56,47 +62,47 @@ char	*get_next_line(int fd)
 ////main/////
 /////////////
 
-// ft_getc
 // int	main(void)
 // {
-// 	int fd = open("./text.txt", O_RDONLY);
-// 	printf("%c", ft_getc(fd));
-// }
+// 	int	fd;
 
-// get_next_line
-// int	main(void)
-// {
-// 	int fd = open("./text.txt", O_RDONLY);
+// 	fd = open("./text.txt", O_RDONLY);
 // 	if (fd == -1)
 // 	{
 // 		perror("Error opening file");
 // 		return (1);
 // 	}
 // 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
 // 	close(fd);
 // 	return (0);
 // }
 
-void	ft_putc(void)
-{
-	line->string = 0;
-	return ;
-}
+// int	main(void)
+// {
+// 	int fd = open("./text.txt", O_RDONLY);
+// 	printf("%c", ft_getc(fd));
+// }
 
-// ft_putc
-int	main(void)
-{
-	t_line	gnl;
-
-	gnl.length = 0;
-	gnl.capacity = BUFFER_SIZE;
-	gnl.string = (char *)malloc(BUFFER_SIZE * sizeof(char));
-	ft_putc(&gnl, 'H');
-	ft_putc(&gnl, 'e');
-	ft_putc(&gnl, 'l');
-	ft_putc(&gnl, 'l');
-	ft_putc(&gnl, 'o');
-	printf("Resulting string: %s\n", gnl.string);
-	free(gnl.string);
-	return (0);
-}
+// int	main(void)
+// {
+// 	t_line	gnl;
+// 	// #  define BUFFER_SIZE 6
+// 	gnl.length = 0;
+// 	gnl.capacity = BUFFER_SIZE;
+// 	gnl.string = (char *)malloc(BUFFER_SIZE * sizeof(char));
+// 	ft_putc(&gnl, 'H');
+// 	ft_putc(&gnl, 'e');
+// 	ft_putc(&gnl, 'l');
+// 	ft_putc(&gnl, 'l');
+// 	ft_putc(&gnl, 'o');
+// 	ft_putc(&gnl, 0);
+// 	printf("Resulting string: %s\n", gnl.string);
+// 	free(gnl.string);
+// 	return (0);
+// }

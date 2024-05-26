@@ -6,7 +6,7 @@
 /*   By: tkitahar <tkitahar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:51:34 by tkitahar          #+#    #+#             */
-/*   Updated: 2024/05/26 21:58:15 by tkitahar         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:59:51 by tkitahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 6
 # endif
 
 typedef struct s_line
