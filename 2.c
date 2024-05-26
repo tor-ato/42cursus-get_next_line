@@ -12,12 +12,6 @@ typedef struct s_line
     size_t capacity;
 } t_line;
 
-typedef struct s_buffinfo
-{
-    char buff[BUFFER_SIZE];
-    char *buffptr;
-    int read_byte;
-} t_buffinfo;
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -38,28 +32,14 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return ((void *)memo_dst);
 }
 
-char ft_getc(int fd)
-{
-    static t_buffinfo buffinfo;
-
-    if (buffinfo.read_byte == 0)
-    {
-        buffinfo.read_byte = read(fd, buffinfo.buff, sizeof buffinfo.buff);
-        buffinfo.buffptr = buffinfo.buff;
-    }
-
-    if (--buffinfo.read_byte >= 0)// n = 1でstop
-        return(*buffinfo.buffptr++);
-    return(EOF);
-}
 
 void ft_putc(t_line *line, char c)
 {
     char *new_string;
 
-    if (line->length + 1 > line->capacity)
+    if (line->length > line->capacity)
     {
-        line->capacity = (line->length + 1) * 2;
+        line->capacity = (line->length) * 2;
         new_string = (char *)malloc(sizeof(char) * line->capacity);
         if (!new_string)
             return ;
@@ -69,30 +49,51 @@ void ft_putc(t_line *line, char c)
     }
     line->string[line->length++] = c;
 }
+// typedef struct s_buffinfo
+// {
+//     char buff[BUFFER_SIZE];
+//     char *buffptr;
+//     int read_byte;
+// } t_buffinfo;
 
-char *get_next_line(int fd)
-{
-    char c;
-    t_line line;
+// char ft_getc(int fd)
+// {
+//     static t_buffinfo buffinfo;
+
+//     if (buffinfo.read_byte == 0)
+//     {
+//         buffinfo.read_byte = read(fd, buffinfo.buff, sizeof buffinfo.buff);
+//         buffinfo.buffptr = buffinfo.buff;
+//     }
+
+//     if (--buffinfo.read_byte >= 0)// n = 1でstop
+//         return(*buffinfo.buffptr++);
+//     return(EOF);
+// }
+
+// char *get_next_line(int fd)
+// {
+//     char c;
+//     t_line line;
 
 
-    line.length = 0;
-    line.capacity = BUFFER_SIZE;
-    line.string = (char *)malloc(BUFFER_SIZE * sizeof(char) * line.capacity);//これはreviewerがfreeする前提で
-    if(!line.string)
-        return(NULL);
-    while (1)
-    {
-        c = ft_getc(fd);
-        if (c == EOF || c == '\n')
-            break;
-        ft_putc(&line, c);
-    }
-    if (line.length == 0 && c == EOF)
-        return (NULL);
-    line.string[line.length] = '\0';
-    return (line.string);
-}
+//     line.length = 0;
+//     line.capacity = BUFFER_SIZE;
+//     line.string = (char *)malloc(BUFFER_SIZE * sizeof(char) * line.capacity);//これはreviewerがfreeする前提で
+//     if(!line.string)
+//         return(NULL);
+//     while (1)
+//     {
+//         c = ft_getc(fd);
+//         if (c == EOF || c == '\n')
+//             break;
+//         ft_putc(&line, c);
+//     }
+//     if (line.length == 0 && c == EOF)
+//         return (NULL);
+//     line.string[line.length] = '\0';
+//     return (line.string);
+// }
 
 // #include <stdio.h>
 
@@ -125,23 +126,23 @@ char *get_next_line(int fd)
 // }
 
 
-int main()//->get_next_line
-{
-    int fd = open("./text.txt", O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Error opening file");
-        return 1;
-    }
-    char *line;
-    while(42)
-    {
-        line = get_next_line(fd);
-        if (!line)
-            return (0);
-        printf("%s\n", line);
-        free(line);
-    }
-    close(fd);
-    return 0;
-}
+// int main()//->get_next_line
+// {
+//     int fd = open("./text.txt", O_RDONLY);
+//     if (fd == -1)
+//     {
+//         perror("Error opening file");
+//         return 1;
+//     }
+//     char *line;
+//     while(42)
+//     {
+//         line = get_next_line(fd);
+//         if (!line)
+//             return (0);
+//         printf("%s\n", line);
+//         free(line);
+//     }
+//     close(fd);
+//     return 0;
+// }

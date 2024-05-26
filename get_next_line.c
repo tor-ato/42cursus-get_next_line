@@ -6,7 +6,7 @@
 /*   By: tkitahar <tkitahar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:51:28 by tkitahar          #+#    #+#             */
-/*   Updated: 2024/05/26 23:02:04 by tkitahar         ###   ########.fr       */
+/*   Updated: 2024/05/26 23:11:03 by tkitahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_next_line(int fd)
 
 	gnl.length = 0;
 	gnl.capacity = BUFFER_SIZE;
-	gnl.string = (char *)malloc(BUFFER_SIZE * sizeof(char));
+	gnl.string = (char *)malloc(sizeof(char) * gnl->capacity);
 	if (!gnl.string)
 		return (NULL);
 	while (1)
@@ -79,6 +79,15 @@ char	*get_next_line(int fd)
 // 	printf("%s\n", get_next_line(fd));
 // 	printf("%s\n", get_next_line(fd));
 // 	printf("%s\n", get_next_line(fd));
+// char *line;
+// while(42)
+// {
+//     line = get_next_line(fd);
+//     if (!line)
+//         return (0);
+//     printf("%s\n", line);
+//     free(line);
+// }
 // 	close(fd);
 // 	return (0);
 // }
