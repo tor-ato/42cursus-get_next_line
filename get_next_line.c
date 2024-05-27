@@ -31,10 +31,9 @@ unsigned char	ft_getc(int fd)
 		if (read_byte < 0)
 		{
 			read_byte = 0;
-			bufp = NULL;
 			return (READ_ERROR);
 		}
-		else if (read_byte == 0)
+		if (read_byte == 0)
 			return (EOF);
 		bufp = buf;
 	}

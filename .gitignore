@@ -7,3 +7,5 @@ a.out.dSYM/
 .vscode/
 objs/
 txt
+.gitignore
+Makefile
