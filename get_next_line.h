@@ -6,7 +6,7 @@
 /*   By: tkitahar <tkitahar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:51:34 by tkitahar          #+#    #+#             */
-/*   Updated: 2024/05/26 22:59:51 by tkitahar         ###   ########.fr       */
+/*   Updated: 2024/05/27 16:29:51 by tkitahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,19 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 6
+#  define BUFFER_SIZE 1
 # endif
 
-typedef struct s_line
+# define READ_ERROR -42
+
+typedef struct s_gnl
 {
-	char	*string;
-	size_t	length;
-	size_t	capacity;
-}			t_line;
+	char	*str;
+	size_t	len;
+	size_t	capa;
+}			t_gnl;
 
 char		*get_next_line(int fd);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
