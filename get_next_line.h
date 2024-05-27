@@ -6,12 +6,12 @@
 /*   By: tkitahar <tkitahar@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:51:34 by tkitahar          #+#    #+#             */
-/*   Updated: 2024/05/27 16:29:51 by tkitahar         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:11:49 by tkitahar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GRT_NEXT_LINE_H
-# define GRT_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <fcntl.h>
 # include <stdio.h>

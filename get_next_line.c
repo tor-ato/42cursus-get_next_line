@@ -29,7 +29,13 @@ unsigned char	ft_getc(int fd)
 	{
 		read_byte = read(fd, buf, BUFFER_SIZE);
 		if (read_byte < 0)
+		{
+			read_byte = 0;
+			bufp = NULL;
 			return (READ_ERROR);
+		}
+		else if (read_byte == 0)
+			return (EOF);
 		bufp = buf;
 	}
 	if (--read_byte >= 0)
@@ -48,11 +54,8 @@ int	ft_putc(t_gnl *gnl, char c)
 		if (!nstr)
 			return (0);
 		gnl->capa = (gnl->len + 1) * 2;
-		if (gnl->str)
-		{
-			ft_memcpy(nstr, gnl->str, gnl->len);
-			free(gnl->str);
-		}
+		ft_memcpy(nstr, gnl->str, gnl->len);
+		free(gnl->str);
 		gnl->str = nstr;
 	}
 	gnl->str[gnl->len++] = c;
@@ -90,25 +93,22 @@ char	*get_next_line(int fd)
 
 // int	main(void)
 // {
-// 	int		fd;
-// 	char	*line;
+// 	int	fd;
 
 // 	fd = open("./text.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error opening file");
-// 		return (1);
-// 	}
-// 	while (42)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (!line)
-// 			return (0);
-// 		printf("%s", line);
-// 		free(line);
-// 	}
+// 	// while (42)
+// 	// {
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
 // 	close(fd);
-// 	// system("leaks a.out");
+// 	fd = open("./text.txt", O_RDONLY);
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	printf("%s", get_next_line(fd));
+// 	// }
+// 	close(fd);
 // 	return (0);
 // }
 
